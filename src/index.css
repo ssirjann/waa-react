@@ -11,3 +11,39 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.Content {
+  /* width: 150px; */
+  padding: 16px;
+  text-align: center;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 3px #ccc;
+  margin: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.Post, .PostForm {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: 80%;
+  margin: 35px auto 0 auto;
+  border-radius: 4px;
+  box-shadow: 2px 2px 3px rgb(225 225 225);
+}
+
+.PostForm label {
+  font-weight: bold;
+  display: block;
+}
+
+.Content:hover,
+.Content:active {
+  background-color: #C0DDF5;
+}
+
+.Field{
+  color: rgb(126, 125, 185);
+  text-align: right;
+}
