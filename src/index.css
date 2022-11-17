@@ -23,7 +23,9 @@ code {
   cursor: pointer;
 }
 
-.Post, .PostForm {
+.Post,
+.PostForm,
+.PostDetail {
   display: flex;
   flex-flow: row wrap;
   justify-content: center;
@@ -31,6 +33,10 @@ code {
   margin: 35px auto 0 auto;
   border-radius: 4px;
   box-shadow: 2px 2px 3px rgb(225 225 225);
+}
+
+.PostDetail h2 {
+  display: block;
 }
 
 .PostForm label {
@@ -43,7 +49,18 @@ code {
   background-color: #C0DDF5;
 }
 
-.Field{
+.Field {
   color: rgb(126, 125, 185);
   text-align: right;
+}
+
+.DetailAction {
+  color: blue;
+  padding: 5px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+
+.SubmitBtn {
+  align-self: flex-end;
 }

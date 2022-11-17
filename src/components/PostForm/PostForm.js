@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useRef, useState } from "react"
 
 
 const PostForm = ({ onSubmit }) => {
@@ -10,15 +10,28 @@ const PostForm = ({ onSubmit }) => {
         setValue(event.target.value);
     }
 
+    const ref = useRef();
+
+    const submit = (e) => {
+        e.preventDefault();
+        console.log(ref);
+        const form = ref.current;
+        const title = form['title'].value;
+        const content = form['content'].value;
+        onSubmit({ title, content });
+    }
+
     return (
-        <form className="PostForm" onSubmit={(s) => {
-            s.preventDefault();
-            onSubmit(value);
-        }}>
+        <form className="PostForm" onSubmit={submit} ref={ref}>
             <div className="InputField">
-                <label htmlFor="newTitle">New Title</label>
-                <input name="newTitle" placeholder="New title for the first post." onChange={handleChange} />
+                <label htmlFor="title">Title</label>
+                <input name="title" placeholder="New title for the first post." onChange={handleChange} />
             </div>
+            <div className="InputField">
+                <label htmlFor="content">Content:</label>
+                <input name="content" placeholder="New title for the first post." onChange={handleChange} />
+            </div>
+            <input type="submit" className="SubmitBtn"></input>
         </form>
     );
 }
