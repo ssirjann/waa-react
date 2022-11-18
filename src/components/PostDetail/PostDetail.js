@@ -1,7 +1,10 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { SelectedPostContext } from "../../context/SelectedPostContext";
 
-const PostDetail = ({ id, onDelete }) => {
+const PostDetail = () => {
+
+    const { id, onDelete } = useContext(SelectedPostContext);
 
     const [postDetail, setPostDetail] = useState({ id, title: '..', content: '..', author: '..' });
 

@@ -2,10 +2,11 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import PostDetail from "../../components/PostDetail/PostDetail";
 import PostForm from "../../components/PostForm/PostForm";
+import { SelectedPostContext } from "../../context/SelectedPostContext";
 import Posts from "../Posts/Posts";
 import "./Dashboard.css"
 
-const postsUri = "http://localhost:8080/api/v1/users/posts/";
+const postsUri = "http://localhost:8080/api/v1/users/1/posts/";
 
 const Dashboard = () => {
     const [posts, setPosts] = useState([
@@ -44,27 +45,17 @@ const Dashboard = () => {
             }).catch(apiErrorHandler)
     }
 
-    const updatePost = (id, post) => {
-        axios.put(postsUri + id)
-            .then(response => {
-                if (response.status = 204)
-                    fetchPosts();
-                else
-                    apiErrorHandler();
-            })
-    }
-
     return <div className="Container">
         <Posts posts={posts} onSelected={setSelected} />
-
         {
             selected &&
-            <PostDetail
-                id={selected}
-                onDelete={deletePost}
-            />
+            <SelectedPostContext.Provider value={{ id: selected, onDelete: deletePost }} >
+                <PostDetail
+                    id={selected}
+                    onDelete={deletePost}
+                />
+            </SelectedPostContext.Provider>
         }
-
         <PostForm onSubmit={post => addPost(post)} />
     </div>
 }

@@ -13,9 +13,8 @@ const PostForm = ({ onSubmit }) => {
     const ref = useRef();
 
     const submit = (e) => {
-        e.preventDefault();
-        console.log(ref);
         const form = ref.current;
+        e.preventDefault();
         const title = form['title'].value;
         const content = form['content'].value;
         onSubmit({ title, content });
